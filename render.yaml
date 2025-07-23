@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: triple_server
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+
+databases:
+  - name: postgres-db
+    plan: free
+    region: ohio
